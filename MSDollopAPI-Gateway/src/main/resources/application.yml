@@ -1,0 +1,31 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: COACHING-SERVICE
+          uri: lb://COACHING-SERVICE
+          predicates:
+             - Path=/api/coaching/**
+     
+        - id: COURSE-SERVICE
+          uri: lb://COURSE-SERVICE
+          predicates:
+             - Path=/api/course/**
+             
+        - id: STUDENT-SERVICE
+          uri: lb://STUDENT-SERVICE
+          predicates:
+             - Path=/api/student/**             
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+         
+         

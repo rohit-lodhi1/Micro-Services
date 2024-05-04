@@ -1,0 +1,36 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: DELIVERY-SERVICE
+          uri: lb://DELIVERY-SERVICE
+          predicates:
+             - Path=/delivery/**
+     
+        - id: ORDER-SERVICE
+          uri: lb://ORDER-SERVICE
+          predicates:
+             - Path=/order/**
+             
+        - id: STOCK-SERVICE
+          uri: lb://STOCK-SERVICE
+          predicates:
+             - Path=/stock/**
+             
+        - id: PAYMENT-SERVICE
+          uri: lb://PAYMENT-SERVICE
+          predicates:
+             - Path=/payment/**          
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+         
+         

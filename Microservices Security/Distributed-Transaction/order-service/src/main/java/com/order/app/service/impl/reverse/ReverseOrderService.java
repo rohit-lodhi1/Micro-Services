@@ -25,7 +25,7 @@ public class ReverseOrderService {
 	private static final  Logger logger = LoggerFactory.getLogger(ReverseOrderService.class);
 	
 	// listening if payment service failed 
-	@KafkaListener(topics = AppConstants.REVERSE_ORDER,groupId =AppConstants.GROUP_ORDER)
+//	@KafkaListener(topics = AppConstants.REVERSE_ORDER,groupId =AppConstants.GROUP_ORDER)
 	public void reverseOrder(String event) {
 		System.out.println("Reverse Order Event :" + event);
 		logger.info(AppConstants.REVERSE_ORDER_EVENT,event);
